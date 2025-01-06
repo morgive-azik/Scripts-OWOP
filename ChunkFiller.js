@@ -3,7 +3,6 @@
 *language:"ru";
 *version:4;
 **/
-var CFx=0,CFy=0,CFc=[0,0,0],CFs=0;
 //Функция для заливки одного чанка.
 function ch(mxCF=CFx+16,myCF=CFy+15) {
     for(;CFy<=myCF;CFy++) {
@@ -36,6 +35,8 @@ function CFinterval() {
 };
 //Проверка аддонов.
 if(!document.getElementById('scr')) {
+	var CFx=0,CFy=0,CFc=[0,0,0],CFs=0;
+	//Функция для создания тега
     function create(tag,where,style,id,text,classList,placeholder,maxLength,type) {
         let element=document.createElement(tag);
         if(id) element.id=id;
@@ -154,7 +155,7 @@ function cfd() {
     };
     document.getElementById('CFstp').onclick=()=>{CFs=-1};
     //Добавление описания особенностей скрипта.
-    document.getElementById('Cn').insertAdjacentElement('beforeend',`\n
+    document.getElementById('Cn').insertAdjacentHTML('beforeend',`\n
         На кнопку "\\", можно вставить текущие координаты курсора.\n
         Для перемещения между строками, используйте "Tab".\n
         Максимальный размер заливки 3 (3 на 3 чанка).\n
