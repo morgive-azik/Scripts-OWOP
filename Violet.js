@@ -118,6 +118,8 @@ document.head.insertAdjacentHTML('beforeend',`<style>
     border-radius: 3px;
     transition-duration: 500ms;
     transition-property: background-color,box-shadow;
+    margin-top: 0;
+    margin-bottom: 0;
   } input[type="checkbox"]:hover {
     background-color: #7d64c8;
     box-shadow: inset 0 0 0 3px #4b329b;
