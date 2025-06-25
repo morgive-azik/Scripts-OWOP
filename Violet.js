@@ -29,12 +29,7 @@ document.head.insertAdjacentHTML('beforeend',`<style>
   } #right-displays>div:nth-child(1) {height: 44px;
   } #right-displays>div {border-radius: 15px 0 0 15px;
   } #right-displays>div>div {box-shadow: none;
-  } #tools {
-    text-align: center;
-    width: 52px;
-    scrollbar-width: none;
-    overflow-y: auto;
-  } #palette-bg,#tools,#help>.content>.links>*>img {height: 100%;
+  } #palette-bg,#help>.content>.links>*>img {height: 100%;
   } #palette-bg {overflow: hidden;
   } #palette-create {
     position: relative;
@@ -49,6 +44,7 @@ document.head.insertAdjacentHTML('beforeend',`<style>
     border-radius: 5px;
     padding: 5px;
   } #toole-container>button {
+    display: block;
     width: 48px;
     height: 48px;
     margin: 2px 0;
@@ -95,14 +91,6 @@ document.head.insertAdjacentHTML('beforeend',`<style>
     display: block;
     pointer-events: none;
   } #help-button {
-    top: 50%;
-    left: 25%;
-    transform: translateY(-50%);
-    margin: 0;
-    background-repeat: no-repeat;
-    background-image: url(/img/plus.png);
-    height: 24px;
-    width: 24px;
     border-image: url(/img/small_border.png) 5 repeat;
     border-width: 5px;
     border-image-outset: 1px;
@@ -146,24 +134,12 @@ document.head.insertAdjacentHTML('beforeend',`<style>
   } #load-scr {z-index: 1;}
 </style>`);
 (function() {
-  let leftDisplay=document.createElement('div'),tools=document.createElement('div'),rightDisplay=document.createElement('div');
-  leftDisplay.id='left-displays';
-  tools.id='tools';
+  let rightDisplay=document.createElement('div');
   rightDisplay.id='right-displays';
-  document.body.insertBefore(leftDisplay,document.getElementById('bottomleft-displays'));
   document.body.insertBefore(rightDisplay,document.getElementById('bottomleft-displays'));
-  leftDisplay=document.getElementById('left-displays');
   rightDisplay=document.getElementById('right-displays');
-  leftDisplay.append(document.createElement('div'),tools);
-  tools=document.getElementById('tools');
-  const tooleContainer=document.getElementById('toole-container');
-  tools.appendChild(tooleContainer);
-  tooleContainer.style='';
-  tooleContainer.classList.remove('wincontainer');
-  OWOP.elements.windows.querySelector('div').remove();
+  document.getElementById('toole-container').style='';
   rightDisplay.append(document.createElement('div'),OWOP.elements.paletteBg);
-  OWOP.elements.helpButton.querySelector('img').remove();
-  leftDisplay.querySelector('div').appendChild(OWOP.elements.helpButton);
   rightDisplay.querySelector('div').appendChild(OWOP.elements.paletteCreate);
   OWOP.elements.paletteBg.appendChild(OWOP.elements.palette);
   rightDisplay.addEventListener('wheel',(e)=>OWOP.player.paletteIndex+=e.deltaY>0?1:-1);
