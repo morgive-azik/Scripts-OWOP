@@ -1,6 +1,7 @@
 (function(){
   "use strict";
-  const styleViolet=`<style>
+  const violet=document.createElement("style");
+  violet.innerHTML=`
   button{
     border-image:url(/img/small_border..png) 6 repeat;
     border-image-outset:1px;
@@ -111,9 +112,8 @@
   #windows>div>span,#help>.title,#notice-display,button,.whitetext,#tooltip,#topright-displays>span,#topleft-displays>span,input[type="text"]{
     color:#7d64c8;
     text-shadow:1px 1px #4b329b
-  }.wincontainer,#right-displays>div>div,#topright-displays>span,#topleft-displays>span,#tooltip,#help>.content,button,.generic-display,input[type="text"]{background-color:#0008}
-  </style>`;
-  document.head.insertAdjacentHTML("beforeend",styleViolet);
+  }.wincontainer,#right-displays>div>div,#topright-displays>span,#topleft-displays>span,#tooltip,#help>.content,button,.generic-display,input[type="text"]{background-color:#0008}`;
+  document.head.appendChild(violet);
   document.getElementById("toole-container").style="";
   let rightDisplay=document.createElement("div");
   rightDisplay.id="right-displays";
@@ -122,8 +122,4 @@
   rightDisplay.append(OWOP.elements.paletteOpts,OWOP.elements.paletteBg);
   OWOP.elements.paletteBg.appendChild(OWOP.elements.palette);
   rightDisplay.addEventListener("wheel",e=>OWOP.player.paletteIndex+=e.deltaY>0?1:-1);
-  OWOP.elements.paletteBg.addEventListener("contextmenu",e=>{
-    e.preventDefault();
-    return false;
-  });
 })();
